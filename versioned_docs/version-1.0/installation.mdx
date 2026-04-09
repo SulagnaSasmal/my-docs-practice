@@ -1,0 +1,68 @@
+---
+sidebar_position: 2
+---
+
+# Installation
+
+This page covers both local development setup and production deployment options.
+
+## Local Installation
+
+### Step 1 — Clone and install
+
+```bash
+git clone https://github.com/your-org/your-project.git
+cd your-project
+npm install
+```
+
+### Step 2 — Verify the install
+
+Run the build to confirm everything compiles cleanly:
+
+```bash
+npm run build
+```
+
+You should see:
+
+```
+[SUCCESS] Generated static files in "build".
+```
+
+### Step 3 — Start the dev server
+
+```bash
+npm run start
+```
+
+## Production Deployment
+
+### GitHub Pages
+
+The repository includes a pre-configured GitHub Actions workflow that automatically builds and deploys on every push to `main`.
+
+```
+.github/
+└── workflows/
+    └── deploy.yml   ← handles build + deploy automatically
+```
+
+No manual steps are needed after the initial repository setup.
+
+### Docker
+
+A `Dockerfile` is provided for teams that prefer containerised deployments:
+
+```bash
+docker build -t my-docs .
+docker run -p 80:80 my-docs
+```
+
+## Verifying the Deployment
+
+After deployment, confirm the site is accessible at your configured URL and that the version dropdown shows the correct current version.
+
+:::tip
+Run `npm run serve` locally to preview the production build before pushing.
+:::

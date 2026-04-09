@@ -1,0 +1,6 @@
+{
+  "theme.navbar.loading": {
+    "message": "Chargement...",
+    "description": "The ARIA label for the loading indicator"
+  }
+}

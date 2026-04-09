@@ -1,0 +1,76 @@
+---
+sidebar_position: 4
+---
+
+# Troubleshooting
+
+Common issues and how to fix them.
+
+## Build Errors
+
+### `Error: Cannot find module`
+
+**Cause:** Missing or corrupted `node_modules`.
+
+**Fix:**
+```bash
+rm -rf node_modules
+npm install
+```
+
+On Windows PowerShell:
+```powershell
+Remove-Item -Recurse -Force node_modules
+npm install
+```
+
+---
+
+### `onBrokenLinks: throw` halts the build
+
+**Cause:** A markdown file contains a link pointing to a page that does not exist.
+
+**Fix:** Find the broken link in the error output and either correct it or set `onBrokenLinks: 'warn'` temporarily while you fix it.
+
+---
+
+## GitHub Actions Failures
+
+### `Process completed with exit code 1` on `npm ci`
+
+**Cause:** `package-lock.json` is out of sync with `package.json`.
+
+**Fix:** Regenerate the lock file locally and commit it:
+```bash
+npm install
+git add package-lock.json
+git commit -m "fix: regenerate package-lock.json"
+git push
+```
+
+---
+
+### Deployment succeeds but site shows a 404
+
+**Cause:** `baseUrl` in `docusaurus.config.js` does not match the repository name.
+
+**Fix:** Set `baseUrl` to `'/your-repo-name/'`, matching exactly the GitHub repository name.
+
+---
+
+## i18n / Locale Issues
+
+### Locale dropdown not appearing
+
+**Cause:** Only one locale is configured.
+
+**Fix:** Add at least two entries to the `locales` array in `docusaurus.config.js` and add the `localeDropdown` item to the navbar (see [Configuration](./configuration)).
+
+---
+
+## Still Stuck?
+
+Open an issue in the [GitHub repository](https://github.com/your-org/your-project/issues) with:
+1. The exact error message
+2. Your Node.js version (`node -v`)
+3. The output of `npm run build`

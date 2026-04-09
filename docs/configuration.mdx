@@ -1,0 +1,76 @@
+---
+sidebar_position: 3
+---
+
+# Configuration
+
+All configuration lives in `docusaurus.config.js` at the project root. This page explains the most commonly changed settings.
+
+## Site Metadata
+
+```js title="docusaurus.config.js"
+const config = {
+  title: 'Your Portal Name',
+  tagline: 'Clear, versioned documentation for your team',
+  url: 'https://your-org.github.io',
+  baseUrl: '/your-project/',
+  organizationName: 'your-org',
+  projectName: 'your-project',
+};
+```
+
+## Navbar
+
+Add or remove items from the top navigation bar:
+
+```js
+navbar: {
+  title: 'Portal',
+  items: [
+    { type: 'docSidebar', sidebarId: 'tutorialSidebar', label: 'Docs' },
+    { type: 'docsVersionDropdown', position: 'right' },       // version picker
+    { type: 'localeDropdown', position: 'right' },             // language picker
+  ],
+},
+```
+
+## Versioning
+
+Once you have a stable release, snapshot it:
+
+```bash
+npm run docusaurus docs:version 1.0
+```
+
+This creates a `versioned_docs/version-1.0/` folder and adds a version entry so readers can switch between release branches.
+
+See the [Versioning](https://docusaurus.io/docs/versioning) docs for the full lifecycle.
+
+## Internationalization (i18n)
+
+Enable additional locales in the config:
+
+```js
+i18n: {
+  defaultLocale: 'en',
+  locales: ['en', 'fr'],
+},
+```
+
+Then generate the translation files:
+
+```bash
+npm run write-translations -- --locale fr
+```
+
+## Custom Branding
+
+All color tokens are overridden in `src/css/custom.css`:
+
+```css
+:root {
+  --ifm-color-primary: #7c3aed;   /* your brand color */
+}
+```
+
+Use the [Infima color generator](https://docusaurus.io/docs/styling-layout#styling-your-site-with-infima) to generate the full set of tint/shade values from a single hex color.

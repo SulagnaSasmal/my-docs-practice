@@ -10,8 +10,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'DevPortal',
+  tagline: 'Versioned, searchable documentation for your team',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -37,7 +37,7 @@ const config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'fr'],
   },
 
   presets: [
@@ -83,7 +83,7 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'My Site',
+        title: 'DevPortal',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
@@ -97,7 +97,15 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            type: 'docsVersionDropdown',
+            position: 'right',
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/SulagnaSasmal/my-docs-practice',
             label: 'GitHub',
             position: 'right',
           },
