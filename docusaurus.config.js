@@ -105,7 +105,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Documentation',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
@@ -136,19 +136,19 @@ const config = {
             ],
           },
           {
-            title: 'Community',
+            title: 'Resources',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Release Notes',
+                href: 'https://example.com/release-notes',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Support Center',
+                href: 'https://example.com/support',
               },
               {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                label: 'Status Page',
+                href: 'https://example.com/status',
               },
             ],
           },
