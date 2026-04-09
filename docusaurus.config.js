@@ -10,7 +10,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'DevPortal',
+  title: 'TechDocs',
   tagline: 'Versioned, searchable documentation for your team',
   favicon: 'img/favicon.svg',
 
@@ -95,9 +95,9 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'DevPortal',
+        title: 'TechDocs',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'TechDocs Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -166,7 +166,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} TechDocs. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

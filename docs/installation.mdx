@@ -4,65 +4,20 @@ sidebar_position: 2
 
 # Installation
 
-This page covers both local development setup and production deployment options.
+This project uses a standard Node-based setup so onboarding is predictable across engineering and documentation teams. The only required local dependencies are Node.js 20+ and npm. No extra CLI tools are needed for day-to-day writing and publishing.
 
-## Local Installation
+For local setup, install packages once and run the development server to preview markdown changes in real time. This gives authors immediate feedback for navigation, links, search indexing, and page hierarchy before opening a pull request.
 
-### Step 1 — Clone and install
+Production installation is handled by the GitHub Actions workflow in `.github/workflows/deploy.yml`. Any commit merged into `main` triggers a clean build and deploy to GitHub Pages, which means there is no manual publishing step and no hidden release process outside the repository.
+
+## Recommended Install Flow
 
 ```bash
-git clone https://github.com/your-org/your-project.git
-cd your-project
+git clone https://github.com/SulagnaSasmal/my-docs-practice.git
+cd my-docs-practice
 npm install
-```
-
-### Step 2 — Verify the install
-
-Run the build to confirm everything compiles cleanly:
-
-```bash
 npm run build
-```
-
-You should see:
-
-```
-[SUCCESS] Generated static files in "build".
-```
-
-### Step 3 — Start the dev server
-
-```bash
 npm run start
 ```
 
-## Production Deployment
-
-### GitHub Pages
-
-The repository includes a pre-configured GitHub Actions workflow that automatically builds and deploys on every push to `main`.
-
-```
-.github/
-└── workflows/
-    └── deploy.yml   ← handles build + deploy automatically
-```
-
-No manual steps are needed after the initial repository setup.
-
-### Docker
-
-A `Dockerfile` is provided for teams that prefer containerised deployments:
-
-```bash
-docker build -t my-docs .
-docker run -p 80:80 my-docs
-```
-
-## Verifying the Deployment
-
-After deployment, confirm the site is accessible at your configured URL and that the version dropdown shows the correct current version.
-
-:::tip
-Run `npm run serve` locally to preview the production build before pushing.
-:::
+If `npm run build` passes locally, the same content is ready for CI deployment.

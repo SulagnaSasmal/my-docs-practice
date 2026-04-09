@@ -4,43 +4,16 @@ sidebar_position: 1
 
 # Getting Started
 
-Welcome to the documentation portal. This guide walks you through everything you need to go from zero to a fully running environment in under 10 minutes.
+TechDocs is designed for internal product teams who need fast, reliable documentation updates without waiting on an engineering release cycle. Writers can edit markdown directly, push changes, and see updates on the live docs site in the same deployment pipeline used by developers.
 
-## Prerequisites
+For a new writer or engineer, the onboarding flow is intentionally short: clone the repository, install dependencies, and run the local server. The local preview mirrors production navigation, search behavior, and version menus, so review feedback is based on what users will actually see.
 
-Before you begin, make sure you have the following:
+Before your first publish, confirm that your GitHub account has write access to the repository and that your branch strategy is clear. Teams that work with release branches should keep day-to-day edits in the current docs and only create a version snapshot when a release candidate is approved.
 
-| Requirement | Minimum Version |
-|---|---|
-| Node.js | 20.0+ |
-| npm | 9.0+ |
-| Git | 2.40+ |
+## Quick Setup Checklist
 
-## Quick Start
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/your-org/your-project.git
-cd your-project
-```
-
-### 2. Install dependencies
-
-```bash
-npm install
-```
-
-### 3. Start the development server
-
-```bash
-npm run start
-```
-
-Your site is now live at [http://localhost:3000](http://localhost:3000).
-
-## What's Next?
-
-- Follow the [Installation](./installation) guide for production setup
-- Read [Configuration](./configuration) to customize the portal
-- Check [Troubleshooting](./troubleshooting) if you run into issues
+1. Clone the repo and install dependencies
+2. Start local preview with `npm run start`
+3. Edit pages in the `docs/` folder
+4. Open a pull request for review
+5. Merge to `main` to trigger auto-deploy

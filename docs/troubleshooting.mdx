@@ -4,73 +4,16 @@ sidebar_position: 4
 
 # Troubleshooting
 
-Common issues and how to fix them.
+Most documentation issues in this project fall into one of three categories: build failures, deployment mismatches, or versioning confusion. A quick local build is the fastest way to isolate whether the problem is content-related or pipeline-related.
 
-## Build Errors
+If CI fails but local preview works, compare your branch against `main` for config differences in `docusaurus.config.js`, `versions.json`, and `.github/workflows/deploy.yml`. In most cases, the error is caused by a broken relative link, an outdated lockfile, or a route mismatch after moving a page.
 
-### `Error: Cannot find module`
+When troubleshooting release docs, always verify which version you are editing. Content in `docs/` updates the current stream, while snapshots in `versioned_docs/version-x.y/` remain frozen unless explicitly edited. This distinction prevents accidental edits to historical release documentation.
 
-**Cause:** Missing or corrupted `node_modules`.
+## Quick Recovery Checklist
 
-**Fix:**
-```bash
-rm -rf node_modules
-npm install
-```
-
-On Windows PowerShell:
-```powershell
-Remove-Item -Recurse -Force node_modules
-npm install
-```
-
----
-
-### `onBrokenLinks: throw` halts the build
-
-**Cause:** A markdown file contains a link pointing to a page that does not exist.
-
-**Fix:** Find the broken link in the error output and either correct it or set `onBrokenLinks: 'warn'` temporarily while you fix it.
-
----
-
-## GitHub Actions Failures
-
-### `Process completed with exit code 1` on `npm ci`
-
-**Cause:** `package-lock.json` is out of sync with `package.json`.
-
-**Fix:** Regenerate the lock file locally and commit it:
-```bash
-npm install
-git add package-lock.json
-git commit -m "fix: regenerate package-lock.json"
-git push
-```
-
----
-
-### Deployment succeeds but site shows a 404
-
-**Cause:** `baseUrl` in `docusaurus.config.js` does not match the repository name.
-
-**Fix:** Set `baseUrl` to `'/your-repo-name/'`, matching exactly the GitHub repository name.
-
----
-
-## i18n / Locale Issues
-
-### Locale dropdown not appearing
-
-**Cause:** Only one locale is configured.
-
-**Fix:** Add at least two entries to the `locales` array in `docusaurus.config.js` and add the `localeDropdown` item to the navbar (see [Configuration](./configuration)).
-
----
-
-## Still Stuck?
-
-Open an issue in the [GitHub repository](https://github.com/your-org/your-project/issues) with:
-1. The exact error message
-2. Your Node.js version (`node -v`)
-3. The output of `npm run build`
+1. Run `npm run build` locally and fix any reported link or markdown errors
+2. Confirm `baseUrl` matches the repository path exactly
+3. Check that `versions.json` includes the expected release order
+4. Verify translated files exist under the correct locale folder
+5. Re-run CI after committing fixes to `main`
